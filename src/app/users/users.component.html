@@ -1,0 +1,65 @@
+<div class="container-fluid p-5">
+    <div class="header mb-4">
+        <span class="badge bg-info fs-3 fw-semibold">Users</span>
+    </div>
+
+    <div class="custom-scrollbar mt-3 ">
+        <div class="container" >
+            @for (user of users; track user.id) {
+            <div class="card border border-0 shadow mb-3">
+                <div class="card-header">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="m-0 fw-semibold fs-5 text-white">{{user.name + " " + user.surname + " (" + user.username + ")"}}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            
+                            <button mat-raised-button color="accent" [disabled]="user.verified" (click)="onApprove(user.id)">Approve <img src="../../assets/snackSuccess.png"></button>
+                            
+                            @if (user.blocked) {
+                                <button mat-raised-button color="primary" (click)="onBlockUnblock(user.id)">Unblock <img src="../../assets/unblock.png" ></button>
+                            }@else {
+                                <button mat-raised-button color="primary" (click)="onBlockUnblock(user.id)">Block <img src="../../assets/block.png"></button>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="fw-semibold fs-5 ">Role <img src="../../assets/role.png"></p>
+                            <mat-chip-listbox aria-label="Fish selection" [(ngModel)]="user.role" (change)="onRoleChange($event, user.id)" >
+                                <mat-chip-option value="Admin" ><p class="fs-5 m-0">Admin</p></mat-chip-option>
+                                <mat-chip-option value="Moderator" ><p class="fs-5 m-0">Moderator</p></mat-chip-option>
+                                <mat-chip-option value="Client" ><p class="fs-5 m-0">Client</p></mat-chip-option>
+                            </mat-chip-listbox>
+                            
+                        </div>
+                        <div class="w-50">
+                            <p class="fw-semibold fs-5 ">Permissions <img src="../../assets/permission.png"></p>
+                            <mat-form-field class="w-100">
+                                <mat-label>Permissions</mat-label>
+                                <mat-select [formControl]="user.permissionsControl" multiple (selectionChange)="onPermissionChange($event, user.id)">
+                                  <mat-select-trigger>
+                                    {{user.permissionsControl.value?.[0] || ''}}
+                                    @if ((user.permissionsControl.value?.length || 0) > 1) {
+                                      <span class="example-additional-selection">
+                                        (+{{(user.permissionsControl.value?.length || 0) - 1}} {{user.permissionsControl.value?.length === 2 ? 'other' : 'others'}})
+                                      </span>
+                                    }
+                                  </mat-select-trigger>
+                                  @for (permission of permissionsList; track permission.id) {
+                                <mat-option [value]="permission.name">{{permission.name}}</mat-option>
+                              }
+                                </mat-select>
+                              </mat-form-field>
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+        
+    </div>
+</div>

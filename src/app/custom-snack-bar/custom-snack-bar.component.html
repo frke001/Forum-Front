@@ -1,0 +1,13 @@
+<div class="cus-snackbar">
+    <div class="snack-mess">
+    @if(data?.success){
+        <img src="../../assets/snackSuccess.png">
+    }@else {
+        <img src="../../assets/snackError.png">
+    }
+    &nbsp;
+    <span class="fs-6 ">{{data?.message}}</span>
+    </div>
+    <div class="spacer"></div>
+    <button mat-button color="accent" (click)="close()">{{data?.action}}</button>
+</div>

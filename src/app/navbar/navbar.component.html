@@ -1,0 +1,70 @@
+
+<nav class="navbar bg-body-tertiary ">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white fs-3 d-flex align-items-center gap-2 fw-semibold" ><img src="../../assets/forum.png">Forum</a>
+      <div class="d-flex align-items-center gap-3">
+          <button  mat-raised-button color="accent" class="hide-button" data-bs-toggle="modal" data-bs-target="#staticLogout"><img src="../../assets/logout.png" > Logout</button>
+          <p class="fw-semibold fs-4 m-0 text-white">{{getUsername()}}</p>
+      <button mat-mini-fab class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <img src="../../assets/menu.png" matTooltip="Menu">
+      </button>
+    </div>
+      <div class="offcanvas offcanvas-end fs-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="header-canvas">
+          
+            <div class="d-flex align-items-center gap-2">
+            <div>
+                <p class="fs-4 p-0 m-0 fw-semibold">{{getUsername()}}</p>
+            </div>
+            </div>
+          
+          <button mat-mini-fab type="button"  class="bg-transparent"  data-bs-dismiss="offcanvas" aria-label="Close"><img src="../../assets/close.png" class="mb-1"></button>
+        </div>
+
+        <div class="offcanvas-body d-flex justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item mb-3">
+              <a routerLink="/forum" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link d-flex align-items-center gap-2 fw-semibold" ><img src="../../assets/forum-menu.png">Forum</a>
+            </li>
+            <li class="nav-item mb-3">
+              <a routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link d-flex align-items-center gap-2 fw-semibold" ><img src="../../assets/users.png">Users</a>
+            </li>
+            <li class="nav-item mb-3">
+              <a routerLink="/message-check" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link d-flex align-items-center gap-2 fw-semibold" ><img src="../../assets/messages-check.png">Messages check</a>
+            </li>
+
+                 
+          </ul>
+        </div>
+        
+        <div class="offcanvas-footer p-3 d-flex align-items-center justify-content-end">
+          
+            <mat-divider class="hide-divider"></mat-divider>
+            <button  mat-raised-button color="accent"  data-bs-toggle="modal" data-bs-target="#staticLogout"><img src="../../assets/logout.png" >Logout</button>           
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="modal fade " id="staticLogout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog text-white modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header bg-dark">
+          <div class="d-flex justify-content-center align-items-center w-100 gap-2">
+            <img src="../../assets/logoutConfirm.png">
+            <span class="fs-5">Logout confirmation</span>
+        </div>
+          <mat-icon data-bs-dismiss="modal" class="pointer">close</mat-icon>
+        </div>
+        <div class="modal-body fs-5">
+          Are you sure you want to logout?
+        </div>
+        <div class="modal-footer bg-dark">
+          <button type="button" mat-raised-button data-bs-dismiss="modal">Close</button>
+          <button type="button" mat-raised-button color="accent" (click)="onLogout()" data-bs-dismiss="modal" routerLink="/home">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

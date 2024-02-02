@@ -1,0 +1,76 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row border rounded-5 p-3 bg-white shadow box-area reg-box justify-content-center">
+            <div class="header-text mb-4 text-center">
+                <p class="fs-3 fw-semibold">Register your account</p>
+                <p class="fs-6 fw-semibold">Please insert your personal data for registration.</p>
+            </div>
+                    <form class="forma" [formGroup]="registerForm">
+                        <label class="fw-semibold">Name<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class="w-100">
+                            <mat-label>Enter name</mat-label>
+                            <input matInput  formControlName="name" required>
+                            <img matSuffix src="../../assets/name.png" class="me-2">
+                            @if (name.invalid) {
+                                <mat-error>Name is required!</mat-error>
+                            }
+                        </mat-form-field>
+                        <label class="fw-semibold">Surname<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class=" w-100">
+                            <mat-label>Enter surname</mat-label>
+                            <input matInput formControlName="surname" required>
+                            <img matSuffix src="../../assets/name.png" class="me-2">
+                            @if (surname.invalid) {
+                                <mat-error>Surname is required!</mat-error>
+                            }
+                        </mat-form-field>
+                        <label class="fw-semibold">Username<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class=" w-100">
+                            <mat-label>Enter username</mat-label>
+                            <input matInput formControlName="username" (input)="onUsernameInput()" required>
+                            <img matSuffix src="../../assets/username.png" class="me-2">
+                            @if (username.invalid) {
+                                <mat-error>Username is required!</mat-error>
+                            }
+                        </mat-form-field>
+                        <label class="fw-semibold">Password<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class=" w-100">
+                            <mat-label>Enter password</mat-label>
+                            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required (input)="onRetypePasswordChange($event)">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <img matSuffix src="{{hide ? '../../assets/eyeOf.png' : '../../assets/eye.png'}}" class="me-2">
+                              </button>
+                            @if (password.invalid) {
+                                <mat-error>Password is invalid!</mat-error>
+                            }
+                        </mat-form-field>
+                        <label class="fw-semibold">Retype password<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class=" w-100">
+                            <mat-label>Enter password</mat-label>
+                            <input matInput formControlName="retypePassword" [type]="hideRetype ? 'password' : 'text'" required (input)="onRetypePasswordChange($event)">
+                            <button mat-icon-button matSuffix (click)="hideRetype = !hideRetype" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRetype">
+                                <img matSuffix src="{{hideRetype ? '../../assets/eyeOf.png' : '../../assets/eye.png'}}" class="me-2">
+                              </button>
+                            @if (retypePassword.invalid) {
+                                <mat-error>Password is invalid!</mat-error>
+                            }
+                        </mat-form-field>
+                        <label class="fw-semibold">Mail<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class=" w-100">
+                            <mat-label>Enter mail</mat-label>
+                            <input matInput  formControlName="mail" required (input)="onMailInput()">
+                            @if (mail.invalid) {
+                                <mat-error>Mail is invalid!</mat-error>
+                            }
+                            <img matSuffix src="../../assets/mail.png" class="me-2">
+                        </mat-form-field>
+                        
+                        <div class="mt-3">
+                            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="registerForm.invalid || passwordsMissmath || !mailOk || !usernameOk" >Submit</button>
+                        </div>
+                    </form>
+              
+            <div class="text-center mt-3">
+                <p class="fw-semibold">Already have account? <a routerLink="/login">Sign in</a></p>
+            </div>
+        </div>
+    </div>

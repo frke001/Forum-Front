@@ -1,0 +1,10 @@
+.cus-snackbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.snack-mess{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

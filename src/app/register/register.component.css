@@ -1,0 +1,21 @@
+.star{
+    color: red;
+}
+.forma{
+    width: 100%;
+}
+.reg-box{
+    width: 50%;
+    background-color: #EEF5FF !important;
+}
+@media only screen and (max-width: 768px){
+    .reg-box{
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 991px){
+    .reg-box{
+        width: 80%;
+    }
+}
+

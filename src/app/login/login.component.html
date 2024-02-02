@@ -1,0 +1,62 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        <div class="pic-box col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
+            <div class="featured-image mb-3">
+                <img src="../../assets/login.png" class="img-fluid" style="width: 250px;">
+            </div>
+            <p class="text-white fs-2 fw-semibold">Be Verified</p>
+            <small class="text-white text-wrap text-center fw-semibold">To keep connected with us please login with your personal
+                info.</small>
+        </div>
+
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center">
+                <div class="header-text mb-4">
+                    <p class="fs-3 fw-semibold">Hello,Again</p>
+                    <p class="fs-6 fw-semibold">We are happy to have you back.</p>
+                </div>
+                <form [formGroup]="loginForm">
+                    <label class="fw-semibold">Username<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class="w-100" >
+                            <mat-label>Enter username</mat-label>
+                            <input matInput  formControlName="username" required>
+                            <img matSuffix src="../../assets/name.png" class="me-2">
+                            @if (username.invalid) {
+                                <mat-error>Username is required!</mat-error>
+                            }
+                            
+                        </mat-form-field>
+                        <label class="fw-semibold">Password<span class="star"> *</span></label>
+                        <mat-form-field color="primary" class="w-100">
+                            <mat-label>Enter password</mat-label>
+                            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <!-- <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+                                <img matSuffix src="{{hide ? '../../assets/eyeOf.png' : '../../assets/eye.png'}}" class="me-2">
+                              </button>
+                            @if (password.errors?.['required']) {
+                                <mat-error>Password is required!</mat-error>
+                            }
+                            @if (password.errors?.['pattern']) {
+                                <mat-error>Password contains at least one big<br>one small letter and number</mat-error>
+                            }
+                        </mat-form-field>
+                    <div class="input-group mb-4 mt-3">
+                        <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="onSubmit()" class="w-100 fs-6">Login</button>
+                    </div>
+                </form>
+
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <p class="fw-semibold m-0 mb-3">Don't have account? <a routerLink="/register">Sign Up</a></p>
+                    <div class="d-flex align-items-center gap-2">
+                        <p class="fw-semibold m-0">Or sign in with</p>
+                        <img src="../../assets/github.png" class="github">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
