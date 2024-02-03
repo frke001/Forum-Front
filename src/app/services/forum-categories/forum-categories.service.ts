@@ -13,4 +13,17 @@ export class ForumCategoriesService {
   getAll():Observable<any>{
     return this.http.get(this.baseUrl);
   }
+
+  getAllComments(id: number):Observable<any>{
+    return this.http.get(this.baseUrl + '/' + id);
+  }
+  insertComment(id: any, request: any){
+    return this.http.post(this.baseUrl + '/' + id, request);
+  }
+  updateComment(id: any, request: any){
+    return this.http.put(this.baseUrl + '/comments/' + id, request);
+  }
+  deleteComment(commentId: any, userId: any){
+    return this.http.delete(this.baseUrl + '/comments/' + commentId + '/' + userId);
+  }
 }

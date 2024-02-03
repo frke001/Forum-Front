@@ -36,7 +36,7 @@ export const routes: Routes = [
             },
             {
                 path: 'message-check',
-                title: 'Message check',
+                title: 'Panding comments',
                 component: MessageCheckComponent,
                 canActivate: [authGuard]
             },
