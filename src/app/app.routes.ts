@@ -10,6 +10,9 @@ import { MessageCheckComponent } from './message-check/message-check.component';
 import { loginGuard } from './guards/login/login.guard';
 import { authGuard } from './guards/auth/auth.guard';
 import { CommentsComponent } from './comments/comments.component';
+import { CallbackComponent } from './callback/callback.component';
+import { adminGuard } from './guards/admin/admin.guard';
+import { moderatorGuard } from './guards/moderator/moderator.guard';
 
 export const routes: Routes = [
     {
@@ -32,13 +35,13 @@ export const routes: Routes = [
                 path: 'users',
                 title: 'Users',
                 component: UsersComponent,
-                canActivate: [authGuard]
+                canActivate: [authGuard, adminGuard]
             },
             {
                 path: 'message-check',
                 title: 'Panding comments',
                 component: MessageCheckComponent,
-                canActivate: [authGuard]
+                canActivate: [authGuard, moderatorGuard]
             },
             {
                 path: '',
@@ -66,7 +69,12 @@ export const routes: Routes = [
         component: RegisterComponent,
         canActivate: [loginGuard]
     },
-   
+    {
+        path: 'callback',
+        title: 'Callback',
+        component: CallbackComponent,
+        canActivate: [loginGuard]
+    },
     {
         path: '',
         redirectTo: 'login',

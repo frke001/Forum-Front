@@ -51,7 +51,9 @@
                     <p class="fw-semibold m-0 mb-3">Don't have account? <a routerLink="/register">Sign Up</a></p>
                     <div class="d-flex align-items-center gap-2">
                         <p class="fw-semibold m-0">Or sign in with</p>
-                        <img src="../../assets/github.png" class="github">
+                        <a (click)="signInWithGitHub()">
+                            <img src="../../assets/github.png" class="github">
+                        </a>
                     </div>
                     
                 </div>

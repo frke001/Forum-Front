@@ -1,13 +1,15 @@
 <div class="container-fluid p-5">
     <div class="header mb-4">
-        <span class="badge bg-info fs-3 fw-semibold">Forum name</span>
+        <span class="badge bg-info fs-3 fw-semibold">{{currentCat?.name}}</span>
     </div>
 
     <div class="custom-scrollbar mt-3 ">
         <div class="container" >
             <div class="mb-4">
                 <div class="d-flex justify-content-end">
+                @if(canCreate()){
                 <button mat-raised-button class="bg-success text-white fs-6 mb-2"  (click)="onAddCollapse()">Add comment</button>
+                }
             </div>
                 <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapseClosed">
                     <div class="card card-body w-100" style="width: 300px;">
@@ -21,31 +23,38 @@
                         <mat-error>Comment is required!</mat-error>
                         }
                     </mat-form-field>
+                    <div class="d-flex gap-2">
                     @if(selectedComment != null){
                         <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" (click)="onSave()" >Save</button>
                     }@else {
                         <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" (click)="onAdd()" >Submit</button>
                     }
+                    <button mat-raised-button color="primary" color="accent" (click)="isCollapseClosed=true">Close</button>
+                </div>
                       </form>
                     </div>
                 </div>
             </div>
-            @for (com of comments; track com.id) {
+            @for (com of comments; track com?.id) {
                 <div class="card mb-5 border border-0 shadow rounded">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <p class="m-0 fs-4 fw-semibold text-white">{{com.userSenderName + " " + com.userSenderSurname + " ("}}{{ com.userSenderId == getUserId() ? "You" : com.userSenderUsername}}{{")"}}</p>
+                        <p class="m-0 fs-4 fw-semibold text-white">{{com?.userSenderName + " " + com?.userSenderSurname + " ("}}{{ com?.userSenderId == getUserId() ? "You" : com?.userSenderUsername}}{{")"}}</p>
                         <div class="d-flex gap-2">
-                            <button mat-raised-button color="accent d-flex"  (click)="onEdit(com)"><img src="../../../assets/modify.png"> Edit</button>
-                            <button mat-raised-button color="primary d-flex" (click)="onDelete(com.id)"><img src="../../../assets/delete.png"> Delete</button>
+                            @if(canUpdate(com)){
+                                <button mat-raised-button color="accent d-flex"  (click)="onEdit(com)"><img src="../../../assets/modify.png"> Edit</button>
+                            }
+                            @if(canDelete(com)){
+                                <button mat-raised-button color="primary d-flex" (click)="onDelete(com.id)"><img src="../../../assets/delete.png"> Delete</button>
+                            }
                         </div>
                     </div>
                     <div class="card-body rounded-bottom">
                         
                         <p class="fw-semibold fs-6 p-2">
-                            {{com.text}}
+                            {{com?.text}}
                         </p>
                         <div class="d-flex justify-content-end">
-                            <p class="mb-1 fw-semibold fs-6">{{com.creationDate}}</p>
+                            <p class="mb-1 fw-semibold fs-6">{{com?.creationDate}}</p>
                             
                         </div>
                     </div>

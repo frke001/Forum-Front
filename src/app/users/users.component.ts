@@ -8,6 +8,8 @@ import { PermissionService } from '../services/permission/permission.service';
 import { UsersService } from '../services/users/users.service';
 import { SnackbarService } from '../services/snackbar/snackbar.service';
 import { NgClass } from '@angular/common';
+import { AuthService } from '../services/auth/auth.service';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-users',
   standalone: true,
@@ -23,7 +25,8 @@ export class UsersComponent {
 
   permissionsList: Array<any> = [];
 
-  constructor(private permissionService: PermissionService, private usersService: UsersService, private snackBarService: SnackbarService){
+  constructor(private permissionService: PermissionService, private usersService: UsersService, private snackBarService: SnackbarService,
+    private authService:AuthService, private router:Router){
     this.permissionService.getAll().subscribe({
       next: (data)=>{
         this.permissionsList = data;        
@@ -99,7 +102,13 @@ export class UsersComponent {
           
         },
         error: (err) => {
+          if (err.status === 400) {
+            this.snackBarService.openSnackBar("Bad request!", "Close", false);
+            this.authService.logout();
+            this.router.navigate(["/login"]);
+          } else {
           this.snackBarService.openSnackBar("Unsuccessful operation!", "Close", false);
+          }
         }
       });
     

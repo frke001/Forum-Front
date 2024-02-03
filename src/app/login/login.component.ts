@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CustomSnackBarComponent } from '../custom-snack-bar/custom-snack-bar.component';
-
+import {conf} from "../conf/config";
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -72,5 +72,8 @@ export class LoginComponent {
         this.loginForm.reset();
       }
     });
+  }
+  signInWithGitHub(){
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${conf.clientId}&redirect_uri=${conf.redirectUri}`;
   }
 }

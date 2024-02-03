@@ -27,4 +27,8 @@ export class NavbarComponent {
     this.authService.logout();
     this.router.navigateByUrl("/login");
   }
+
+  getRole(){
+    return this.authService.getRole();
+  }
 }

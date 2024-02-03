@@ -26,4 +26,16 @@ export class ForumCategoriesService {
   deleteComment(commentId: any, userId: any){
     return this.http.delete(this.baseUrl + '/comments/' + commentId + '/' + userId);
   }
+  getCategoryById(id: number){
+    return this.http.get(this.baseUrl + '/category/' + id)
+  }
+  getAllNotApprovedComments():Observable<any>{
+    return this.http.get(this.baseUrl + '/pending')
+  }
+  acceptComment(id:any,request:any){
+    return this.http.put(this.baseUrl + '/comments/accept/' + id, request);
+  }
+  forbidComment(id:any){
+    return this.http.delete(this.baseUrl + '/comments/forbid/' + id);
+  }
 }

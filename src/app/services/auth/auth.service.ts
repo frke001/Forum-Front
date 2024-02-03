@@ -62,7 +62,9 @@ export class AuthService {
   public getUsername() {
     return this.decodeToken() ? this.decodeToken().sub : null;
   }
-
+  public getRole() {
+    return this.decodeToken() ? this.decodeToken().role : null;
+  }
   public isTokenExpired(): boolean {
     const expiryTime: number = this.getExpiryTime();
     if (expiryTime) {
@@ -77,4 +79,21 @@ export class AuthService {
       return false;
     }
   }
+
+  sendCode(code: any):Observable<any>{
+    return this.http.get(this.baseUrl + 'oauth2/callback?code='+code);
+  }
+  canCreate(){
+    var permisions = sessionStorage.getItem("permissions");
+    return (permisions && permisions?.includes("CREATE"));
+  }
+  canDelete(){
+    var permisions = sessionStorage.getItem("permissions");
+    return (permisions && permisions?.includes("DELETE"));
+  }
+  canUpdate(){
+    var permisions = sessionStorage.getItem("permissions");
+    return (permisions && permisions?.includes("UPDATE"));
+  }
+
 }

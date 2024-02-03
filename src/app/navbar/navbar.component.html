@@ -23,16 +23,20 @@
 
         <div class="offcanvas-body d-flex justify-content-center">
           <ul class="navbar-nav">
+            
             <li class="nav-item mb-3">
               <a routerLink="/forum" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link d-flex align-items-center gap-2 fw-semibold" ><img src="../../assets/forum-menu.png">Forum</a>
             </li>
+            @if (getRole() == "Admin") {
             <li class="nav-item mb-3">
               <a routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link d-flex align-items-center gap-2 fw-semibold" ><img src="../../assets/users.png">Users</a>
             </li>
+          }
+          @if (getRole() == "Admin" || getRole() == "Moderator") {
             <li class="nav-item mb-3">
               <a routerLink="/message-check" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link d-flex align-items-center gap-2 fw-semibold" ><img src="../../assets/messages-check.png">Panding comments</a>
             </li>
-
+          }
                  
           </ul>
         </div>
