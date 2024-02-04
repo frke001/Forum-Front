@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PermissionService {
 
-  private baseUrl: string = "http://localhost:9000/api/v1/permissions";
+  private baseUrl: string = "https://localhost:9000/api/v1/permissions";
   constructor(private http: HttpClient) { }
 
   getAll():Observable<any>{

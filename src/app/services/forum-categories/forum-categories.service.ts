@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ForumCategoriesService {
 
-  private baseUrl: string = "http://localhost:9000/api/v1/forum-categories";
+  private baseUrl: string = "https://localhost:9000/api/v1/forum-categories";
   constructor(private http:HttpClient) { }
 
   getAll():Observable<any>{

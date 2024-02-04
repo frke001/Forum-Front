@@ -40,7 +40,14 @@ export class MessageCheckComponent {
 
       },
       error: (err) => {
-        this.snackBarService.openSnackBar("Error during communication with server!", "Close", false);
+        if (err.status === 403) {
+          this.snackBarService.openSnackBar("Bad request!", "Close", false);
+          this.authService.logout();
+          this.router.navigate(["/login"]);
+        } else {
+          this.snackBarService.openSnackBar("Error during communication with server!", "Close", false);
+        }
+
       }
     })
 
@@ -66,7 +73,7 @@ export class MessageCheckComponent {
       },
       error: (err) => {
 
-        if (err.status === 400) {
+        if (err.status === 400 || err.status === 403) {
           this.snackBarService.openSnackBar("Bad request!", "Close", false);
           this.authService.logout();
           this.router.navigate(["/login"]);
@@ -90,7 +97,13 @@ export class MessageCheckComponent {
         this.snackBarService.openSnackBar("Successful operation!", "Close", true);
       },
       error: (err) => {
+        if (err.status === 403) {
+          this.snackBarService.openSnackBar("Bad request!", "Close", false);
+          this.authService.logout();
+          this.router.navigate(["/login"]);
+        } else {
         this.snackBarService.openSnackBar("Unsuccessful operation!", "Close", false);
+        }
       }
     })
   }

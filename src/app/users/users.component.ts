@@ -42,6 +42,11 @@ export class UsersComponent {
         
       },
       error: (err)=>{
+        if (err.status === 403) {
+          this.snackBarService.openSnackBar("Bad request!", "Close", false);
+          this.authService.logout();
+          this.router.navigate(["/login"]);
+        }
         this.snackBarService.openSnackBar("Error during communication with server!", "Close", false);
       }
     })

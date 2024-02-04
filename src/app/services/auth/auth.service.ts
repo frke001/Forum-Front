@@ -7,7 +7,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class AuthService {
 
-  private baseUrl: string = "http://localhost:9000/api/v1/auth/";
+  private baseUrl: string = "https://localhost:9000/api/v1/auth/";
   constructor(private http: HttpClient) { }
 
   register(request: any){

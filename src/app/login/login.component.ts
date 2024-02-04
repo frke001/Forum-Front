@@ -54,7 +54,6 @@ export class LoginComponent {
     }).subscribe({
 
       next: (data) => {
-        //localStorage.setItem("token", data.token);
         sessionStorage.setItem("id", data);
         this.router.navigateByUrl("/code");
 
