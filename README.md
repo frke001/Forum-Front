@@ -28,10 +28,12 @@ For further details about Angular CLI, utilize `ng help` or visit the [Angular C
 
 ## Application Screenshots
 
-![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/93668747/1a0347da-d22c-4ce4-9315-5ae34257a441)
-![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/93668747/9590994a-31cd-4dda-be66-3ccc56039ca8)
-![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/93668747/98123e6f-73b4-4e98-8e7e-a9583cabe99e)
-![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/93668747/b82b385c-49e3-4e8f-9542-45cf00cb4573)
+![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/93668747/d0e486bf-af9c-4b55-bd00-634f4a7be1d7)
+![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/158752466/e8af6da7-1511-49a3-9b4f-f1a0adb5ce03)
+![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/158752466/13d38a36-4fac-4af9-88d2-c546f4f40320)
+![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/158752466/e0fdc6e1-4313-4f22-92f7-0505163c5fc2)
+![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/158752466/b5f08ef9-1254-435d-b299-04995a5ad88e)
+
 ## Functionality
 
 - **Discussion Topics**: Users can explore and participate in discussions categorized under various topics.
