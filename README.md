@@ -1,6 +1,6 @@
-# OnlineFitness - Frontend Application
+# Online Forum - Frontend Application
 
-Central platform for accessing and participating in online fitness programs. Enables users to search, participate, and interact with various programs, as well as track progress and create their own programs.
+This project represents the frontend application for an internet forum where registered users can engage in discussions across various topics. Users can browse and participate in discussions related to topics such as Science, Culture, Sports, and Music.
 This project was generated with Angular CLI version 17.0.8. OnlineFitness is a web application that allows users to access various fitness programs, search for programs, interact with programs, track progress, and create their own programs.
 
 ## Running the Application
@@ -34,12 +34,13 @@ For further details about Angular CLI, utilize `ng help` or visit the [Angular C
 ![image](https://github.com/frke001/Task-scheduler-and-parallel-processing-of-multimedia-data/assets/93668747/b82b385c-49e3-4e8f-9542-45cf00cb4573)
 ## Functionality
 
-- **Program Search**: Users can search for different fitness programs based on category, difficulty, duration, and other criteria.
-- **Program Details Viewing**: Detailed view of each program, including description, instructors, images, and contact information.
-- **Program Interaction**: Users can ask questions and communicate with other users.
-- **Creating Custom Programs**: Users can create and share their fitness programs with other users.
+- **Discussion Topics**: Users can explore and participate in discussions categorized under various topics.
+- **User Roles**: Different user roles such as Administrator, Moderator, and User with different privileges and permissions.
+- **User Authentication**: Secure user authentication mechanism with multi-factor authentication for enhanced security.
+- **Content Management**: Administrators and Moderators can manage user accounts, comments, and permissions.
+- **Secure Communication**: Implementation of security measures to detect and prevent common attacks such as XSS and SQL injection.
 
 ## Application Architecture
 
-OnlineFitness application is structured using the Angular framework, which facilitates easy management of components, services, guards, interceptors, and other features. This component-based architecture ensures scalability, maintainability, and extensibility of the application.
+Online Forum application is structured using the Angular framework, which facilitates easy management of components, services, guards, interceptors, and other features. This component-based architecture ensures scalability, maintainability, and extensibility of the application.
 
